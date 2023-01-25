@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		BB2956BC297708A200719BC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2956BB297708A200719BC5 /* AppDelegate.swift */; };
 		BB2956BE297708A200719BC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2956BD297708A200719BC5 /* SceneDelegate.swift */; };
-		BB2956C0297708A200719BC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2956BF297708A200719BC5 /* ViewController.swift */; };
+		BB2956C0297708A200719BC5 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2956BF297708A200719BC5 /* MainPageViewController.swift */; };
 		BB2956C3297708A200719BC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2956C1297708A200719BC5 /* Main.storyboard */; };
 		BB2956C5297708A300719BC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2956C4297708A300719BC5 /* Assets.xcassets */; };
 		BB2956C8297708A300719BC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2956C6297708A300719BC5 /* LaunchScreen.storyboard */; };
+		BB2956D029770B3E00719BC5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2956CF29770B3E00719BC5 /* SignInViewController.swift */; };
+		BB2956F629771C9D00719BC5 /* CredentialsValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2956F529771C9D00719BC5 /* CredentialsValidation.swift */; };
+		BB397F3D2978339B0021B713 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB397F3C2978339B0021B713 /* Keychain.swift */; };
+		BB397F3F29795B2B0021B713 /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB397F3E29795B2B0021B713 /* AppStorage.swift */; };
+		BB93B53B297D761F00588718 /* SignInNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93B53A297D761F00588718 /* SignInNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BB2956B8297708A200719BC5 /* SignInScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2956BB297708A200719BC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB2956BD297708A200719BC5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BB2956BF297708A200719BC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BB2956BF297708A200719BC5 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		BB2956C2297708A200719BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB2956C4297708A300719BC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB2956C7297708A300719BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB2956C9297708A300719BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB2956CF29770B3E00719BC5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		BB2956F529771C9D00719BC5 /* CredentialsValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsValidation.swift; sourceTree = "<group>"; };
+		BB397F3C2978339B0021B713 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		BB397F3E29795B2B0021B713 /* AppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorage.swift; sourceTree = "<group>"; };
+		BB93B53A297D761F00588718 /* SignInNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +68,26 @@
 			children = (
 				BB2956BB297708A200719BC5 /* AppDelegate.swift */,
 				BB2956BD297708A200719BC5 /* SceneDelegate.swift */,
-				BB2956BF297708A200719BC5 /* ViewController.swift */,
 				BB2956C1297708A200719BC5 /* Main.storyboard */,
+				BB93B537297AAE4C00588718 /* ViewControllers */,
+				BB397F3E29795B2B0021B713 /* AppStorage.swift */,
+				BB2956F529771C9D00719BC5 /* CredentialsValidation.swift */,
+				BB397F3C2978339B0021B713 /* Keychain.swift */,
 				BB2956C4297708A300719BC5 /* Assets.xcassets */,
 				BB2956C6297708A300719BC5 /* LaunchScreen.storyboard */,
 				BB2956C9297708A300719BC5 /* Info.plist */,
 			);
 			path = SignInScreen;
+			sourceTree = "<group>";
+		};
+		BB93B537297AAE4C00588718 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB2956CF29770B3E00719BC5 /* SignInViewController.swift */,
+				BB93B53A297D761F00588718 /* SignInNavigationController.swift */,
+				BB2956BF297708A200719BC5 /* MainPageViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB2956C0297708A200719BC5 /* ViewController.swift in Sources */,
+				BB2956D029770B3E00719BC5 /* SignInViewController.swift in Sources */,
+				BB397F3F29795B2B0021B713 /* AppStorage.swift in Sources */,
+				BB2956C0297708A200719BC5 /* MainPageViewController.swift in Sources */,
 				BB2956BC297708A200719BC5 /* AppDelegate.swift in Sources */,
+				BB2956F629771C9D00719BC5 /* CredentialsValidation.swift in Sources */,
 				BB2956BE297708A200719BC5 /* SceneDelegate.swift in Sources */,
+				BB93B53B297D761F00588718 /* SignInNavigationController.swift in Sources */,
+				BB397F3D2978339B0021B713 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
