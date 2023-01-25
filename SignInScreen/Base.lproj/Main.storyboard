@@ -19,7 +19,7 @@
                                 <rect key="frame" x="20" y="40" width="374" height="874"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="GC7-5H-BSk">
-                                        <rect key="frame" x="104" y="26" width="166" height="166.5"/>
+                                        <rect key="frame" x="104" y="48" width="166" height="166.5"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="ATU-z1-DLo">
@@ -93,7 +93,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ATU-z1-DLo" firstAttribute="centerX" secondItem="u3B-C4-Ctv" secondAttribute="centerX" id="7YH-6g-nux"/>
-                                    <constraint firstItem="GC7-5H-BSk" firstAttribute="centerY" secondItem="u3B-C4-Ctv" secondAttribute="centerY" multiplier="0.25" id="CiQ-T1-l0o"/>
+                                    <constraint firstItem="GC7-5H-BSk" firstAttribute="centerY" secondItem="u3B-C4-Ctv" secondAttribute="centerY" multiplier="0.3" id="CiQ-T1-l0o"/>
                                     <constraint firstItem="ATU-z1-DLo" firstAttribute="centerY" secondItem="u3B-C4-Ctv" secondAttribute="centerY" multiplier="0.9" id="U3b-Re-kR0"/>
                                     <constraint firstItem="GC7-5H-BSk" firstAttribute="centerX" secondItem="u3B-C4-Ctv" secondAttribute="centerX" id="tTK-GS-b60"/>
                                 </constraints>

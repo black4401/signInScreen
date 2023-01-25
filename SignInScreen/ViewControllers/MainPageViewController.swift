@@ -9,7 +9,7 @@ import UIKit
 
 class MainPageViewController: UIViewController {
     
-    private var appStorage = AppStorage()
+    //private var appStorage = AppStorage()
     
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var greetingsLabel: UILabel!
@@ -25,72 +25,30 @@ class MainPageViewController: UIViewController {
         
     }
     
-    func signOut() {
+   private func signOut() {
         KeyChain.removePassword(service: "logInApp", account: "account1")
-        appStorage.removeUser()
-        appStorage.saveSignInStatus(value: false)
+        AppStorage.removeUser()
+       AppStorage.saveSignInStatus(value: false)
         
         if presentingViewController == nil {
-            let signInVC = MainPageViewController.instantiate()
-            signInVC.modalPresentationStyle = .fullScreen
-            view.window?.rootViewController = signInVC
-            view.window?.makeKeyAndVisible()
+            self.presentSignInVC()
         } else {
             dismiss(animated: true)
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private func presentSignInVC() {
+        if let signInVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: VCIdentifiers.signInVC) as? SignInViewController {
+            signInVC.modalPresentationStyle = .fullScreen
+            present(signInVC, animated: true)
+        }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         guard let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") else {
             return
         }
-        greetingsLabel.text = "Welcome to the \(name), \(appStorage.getUsername())!"
+        greetingsLabel.text = "Welcome to the \(name), \(AppStorage.getUsername())!"
     }
 }
-
-extension UIViewController {
-    
-    static func instantiate() -> Self {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(
-            withIdentifier: VCIdentifiers.mainVC) as! Self
-        return viewController
-    }
-}
-
-class VCIdentifiers {
-    
-    static let mainVC = "MainPageVC"
-    static let signInVC = "SignInPageVC"
-}
-
-class Alert {
-    enum Action {
-        case ok(style: UIAlertAction.Style = .default, _ handler: ((UIAlertAction) -> ())? = nil)
-        case cancel
-    }
-    
-    static func createAction(_ action: Action) -> UIAlertAction {
-        switch action {
-        case let .ok(style, handler):
-            return UIAlertAction(title: "OK", style: style, handler: handler)
-        case .cancel:
-            return UIAlertAction(title: "Cancel", style: .cancel)
-        }
-    }
-    
-    static func create(title: String? = nil,
-                       message: String? = nil,
-                       preferredStyle: UIAlertController.Style = .alert,
-                       actions: [UIAlertAction] = [createAction(.ok())]) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-        for action in actions {
-            alert.addAction(action)
-        }
-        return alert
-    }
-}
-

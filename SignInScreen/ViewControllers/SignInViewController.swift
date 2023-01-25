@@ -18,9 +18,8 @@ class SignInViewController: UIViewController {
     @IBOutlet private weak var emailInvalidLabel: UILabel!
     @IBOutlet weak var passInvalidLabel: UILabel!
     
-    @IBOutlet weak var viewYConstraint: NSLayoutConstraint!
-    
     override func viewDidLoad() {
+        super.viewDidLoad()
         usernameField?.delegate = self
         passwordField?.delegate = self
         hideErrorMessages()
@@ -28,16 +27,16 @@ class SignInViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        usernameField.addTarget(self, action: #selector(MyTextFielAction)
+        usernameField.addTarget(self, action: #selector(textFieldAction)
                                 , for: UIControl.Event.primaryActionTriggered)
-        passwordField.addTarget(self, action: #selector(MyTextFielAction)
+        passwordField.addTarget(self, action: #selector(textFieldAction)
                                 , for: UIControl.Event.primaryActionTriggered)
         
         usernameField.text = ""
         passwordField.text = ""
     }
     
-    @objc func MyTextFielAction(textField: UITextField) {
+    @objc func textFieldAction(textField: UITextField) {
         if usernameField.isFirstResponder {
             usernameField.resignFirstResponder()
             passwordField.becomeFirstResponder()
@@ -48,6 +47,7 @@ class SignInViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         hideErrorMessages()
         usernameField.text = ""
         passwordField.text = ""
@@ -81,8 +81,8 @@ class SignInViewController: UIViewController {
             present(mainPageVC, animated: true)
             
             KeyChain.savePassword(service: "logInApp", account: email, data: pass)
-            appStorage.saveUsername(value: email)
-            appStorage.saveSignInStatus(value: true)
+            AppStorage.saveUsername(value: email)
+            AppStorage.saveSignInStatus(value: true)
         }
         loginButton.isSelected = false
     }
@@ -109,14 +109,3 @@ extension SignInViewController {
     }
 }
 
-extension SignInViewController {
-    
-    func delay(_ delay:Double, closure:@escaping ()->()) {
-        run(after: delay, closure: closure)
-    }
-    
-    func run(after wait: TimeInterval, closure: @escaping () -> Void) {
-        let queue = DispatchQueue.main
-        queue.asyncAfter(deadline: DispatchTime.now() + wait, execute: closure)
-    }
-}

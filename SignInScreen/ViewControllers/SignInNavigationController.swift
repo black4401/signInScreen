@@ -9,14 +9,14 @@ import UIKit
 
 class SignInNavigationController: UINavigationController {
     
-    private let appStorage = AppStorage()
+    //private let appStorage = AppStorage()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appStorage.getSignInStatus() ? presentMainScreen() : presentSignIn()
-        print("Logged in status: \(appStorage.getSignInStatus())")
+        AppStorage.getSignInStatus() ? presentMainScreen() : presentSignIn()
+        print("Logged in status: \(AppStorage.getSignInStatus())")
     }
     
     private func presentMainScreen() {
