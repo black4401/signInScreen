@@ -26,7 +26,7 @@ class MainPageViewController: UIViewController {
     }
     
    private func signOut() {
-        KeyChain.removePassword(service: "logInApp", account: "account1")
+       KeyChain.removePassword(service: "logInApp", account: AppStorage.getUsername())
         AppStorage.removeUser()
        AppStorage.saveSignInStatus(value: false)
         
