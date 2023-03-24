@@ -16,6 +16,7 @@ class Alert {
     static func createAction(_ action: Action) -> UIAlertAction {
         switch action {
         case let .ok(style, handler):
+                #warning("This action is used for the sign out alert, which is destructive and it will be better to add more information in it")
             return UIAlertAction(title: "OK", style: style, handler: handler)
         case .cancel:
             return UIAlertAction(title: "Cancel", style: .cancel)

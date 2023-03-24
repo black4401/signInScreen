@@ -43,12 +43,10 @@ class KeyChain {
 
         let status = SecItemCopyMatching(modifierQuery(service: service, account: account), &dataTypeRef)
 
-        if status == errSecSuccess,
-            let retrievedData = dataTypeRef as? Data {
+        if status == errSecSuccess, let retrievedData = dataTypeRef as? Data {
             return String(data: retrievedData, encoding: .utf8)
         } else {
             checkError(status)
-
             return nil
         }
     }
@@ -64,6 +62,7 @@ class KeyChain {
     
     fileprivate static func checkError(_ status: OSStatus) {
         if status != errSecSuccess {
+            #warning("Please rename the err to a more accurate name")
             if let err = SecCopyErrorMessageString(status, nil) {
                 print("Operation failed: \(err)")
             }

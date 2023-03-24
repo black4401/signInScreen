@@ -8,7 +8,7 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-    
+    #warning("Please group the class properties and methods for better readability")
     private let credentialValidator = CredentialsValidation()
     private var appStorage = AppStorage()
     
@@ -23,7 +23,7 @@ class SignInViewController: UIViewController {
         usernameField?.delegate = self
         passwordField?.delegate = self
         hideErrorMessages()
-        
+        #warning("Consider extracting some of the logic here in a method or two")
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -49,6 +49,7 @@ class SignInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideErrorMessages()
+        #warning("You can create a method that changes both textfields text to empty string to not repeat code")
         usernameField.text = ""
         passwordField.text = ""
     }
@@ -103,6 +104,7 @@ extension SignInViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    #warning("this method is not used outside of the class and can be private")
     func hideErrorMessages() {
         emailInvalidLabel.text = ""
         passInvalidLabel.text = ""
