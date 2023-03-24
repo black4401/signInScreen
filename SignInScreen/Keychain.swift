@@ -62,9 +62,8 @@ class KeyChain {
     
     fileprivate static func checkError(_ status: OSStatus) {
         if status != errSecSuccess {
-            #warning("Please rename the err to a more accurate name")
-            if let err = SecCopyErrorMessageString(status, nil) {
-                print("Operation failed: \(err)")
+            if let errorMessage = SecCopyErrorMessageString(status, nil) {
+                print("Operation failed: \(errorMessage)")
             }
         }
     }

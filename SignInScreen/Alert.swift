@@ -9,24 +9,23 @@ import UIKit
 
 class Alert {
     enum Action {
-        case ok(style: UIAlertAction.Style = .default, _ handler: ((UIAlertAction) -> ())? = nil)
+        case confirmSignOut(style: UIAlertAction.Style = .default, _ handler: ((UIAlertAction) -> ())? = nil)
         case cancel
     }
     
     static func createAction(_ action: Action) -> UIAlertAction {
         switch action {
-        case let .ok(style, handler):
-                #warning("This action is used for the sign out alert, which is destructive and it will be better to add more information in it")
-            return UIAlertAction(title: "OK", style: style, handler: handler)
+            case let .confirmSignOut(_, handler):
+                return UIAlertAction(title: "Yes, sign out?", style: .destructive, handler: handler)
         case .cancel:
-            return UIAlertAction(title: "Cancel", style: .cancel)
+            return UIAlertAction(title: "Stay, signed in", style: .cancel)
         }
     }
     
     static func create(title: String? = nil,
                        message: String? = nil,
                        preferredStyle: UIAlertController.Style = .alert,
-                       actions: [UIAlertAction] = [createAction(.ok())]) -> UIAlertController {
+                       actions: [UIAlertAction] = [createAction(.confirmSignOut())]) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         for action in actions {
             alert.addAction(action)

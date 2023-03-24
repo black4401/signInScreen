@@ -7,8 +7,12 @@
 
 import Foundation
 
-class VCIdentifiers {
+enum VCIdentifiers {
     
     static let mainVC = "MainPageVC"
     static let signInVC = "SignInPageVC"
+}
+
+enum StoryboardIdentifiers {
+    static let main = "Main"
 }

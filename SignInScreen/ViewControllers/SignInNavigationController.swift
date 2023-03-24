@@ -8,11 +8,6 @@
 import UIKit
 
 class SignInNavigationController: UINavigationController {
-#warning("Please group the class properties and methods for better readability")
-    
-    #warning("Please remove commented code if its not needed")
-    //private let appStorage = AppStorage()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,18 +15,18 @@ class SignInNavigationController: UINavigationController {
         AppStorage.getSignInStatus() ? presentMainScreen() : presentSignIn()
         print("Logged in status: \(AppStorage.getSignInStatus())")
     }
-    #warning("Consider grouping private methods in a private extension")
-    #warning("Please extract hardcoded values in constants")
-    private func presentMainScreen() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainScreenVC = storyboard.instantiateViewController(withIdentifier: "MainPageVC")
+}
+
+private extension SignInNavigationController {
+    func presentMainScreen() {
+        let storyboard = UIStoryboard(name: StoryboardIdentifiers.main, bundle: nil)
+        let mainScreenVC = storyboard.instantiateViewController(withIdentifier: VCIdentifiers.mainVC)
         viewControllers = [mainScreenVC]
     }
     
-    private func presentSignIn() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInPageVC")
+    func presentSignIn() {
+        let storyboard = UIStoryboard(name: StoryboardIdentifiers.main, bundle: nil)
+        let signInVC = storyboard.instantiateViewController(withIdentifier: VCIdentifiers.signInVC)
         viewControllers = [signInVC]
     }
-    
 }

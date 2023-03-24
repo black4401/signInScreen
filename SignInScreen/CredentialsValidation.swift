@@ -33,10 +33,9 @@ enum ValidationErrors {
     var message: String {
         switch self {
             case .email:
-                #warning("A more descriptive message might be better here, for example The email address you entered ... and as a warning message it is good to end with !")
-                return "Your email address is not valid."
+                return "The email entered address is not valid."
             case .password:
-                return "Your password must be a minimum of 8 characters and must contain at least one special character."
+                return "The password must be a minimum of 8 characters and must contain at least one special character."
         }
     }
 }

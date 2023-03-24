@@ -8,7 +8,7 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-    #warning("Please group the class properties and methods for better readability")
+    
     private let credentialValidator = CredentialsValidation()
     private var appStorage = AppStorage()
     
@@ -20,23 +20,34 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         usernameField?.delegate = self
         passwordField?.delegate = self
+        
+        addTapGesture()
+        
+        addTargetForPrimaryKeyboardAction(to: usernameField)
+        addTargetForPrimaryKeyboardAction(to: passwordField)
+        
         hideErrorMessages()
-        #warning("Consider extracting some of the logic here in a method or two")
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
-        usernameField.addTarget(self, action: #selector(textFieldAction)
-                                , for: UIControl.Event.primaryActionTriggered)
-        passwordField.addTarget(self, action: #selector(textFieldAction)
-                                , for: UIControl.Event.primaryActionTriggered)
-        
-        usernameField.text = ""
-        passwordField.text = ""
+        setEmailFieldEmpty()
+        setPasswordFieldEmpty()
     }
     
-    @objc func textFieldAction(textField: UITextField) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        hideErrorMessages()
+        
+        setEmailFieldEmpty()
+        setPasswordFieldEmpty()
+    }
+    
+    @IBAction private func didPressLogIn(_ sender: Any) {
+        performSignIn()
+    }
+    
+    @objc private func didPressKeyboardPrimaryAction() {
         if usernameField.isFirstResponder {
             usernameField.resignFirstResponder()
             passwordField.becomeFirstResponder()
@@ -46,19 +57,35 @@ class SignInViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        hideErrorMessages()
-        #warning("You can create a method that changes both textfields text to empty string to not repeat code")
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+private extension SignInViewController {
+    func setEmailFieldEmpty() {
         usernameField.text = ""
+    }
+    
+    func setPasswordFieldEmpty() {
         passwordField.text = ""
     }
     
-    @IBAction func didPressLogIn(_ sender: Any) {
-        performSignIn()
+    func hideErrorMessages() {
+        emailInvalidLabel.text = ""
+        passInvalidLabel.text = ""
     }
     
-    private func performSignIn() {
+    func addTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func addTargetForPrimaryKeyboardAction(to textField: UITextField) {
+        textField.addTarget(self, action: #selector(didPressKeyboardPrimaryAction), for: UIControl.Event.primaryActionTriggered)
+    }
+    
+    func performSignIn() {
         hideErrorMessages()
         loginButton.isSelected = true
         
@@ -70,10 +97,11 @@ class SignInViewController: UIViewController {
         let isPasswordValid = credentialValidator.isValidPassword(pass)
         
         if !isEmailValid {
-            emailInvalidLabel.text = "Your email address is not valid."
+            emailInvalidLabel.text = "The email address you entered is not valid."
         }
+        
         if !isPasswordValid {
-            passInvalidLabel.text = "Your password must be a minimum of 8 characters and must contain at least one special character."
+            passInvalidLabel.text = "The password must be a minimum of 8 characters and must contain at least one special character."
         }
         
         if isEmailValid && isPasswordValid {
@@ -99,15 +127,3 @@ extension SignInViewController: UITextFieldDelegate {
         }
     }
 }
-
-extension SignInViewController {
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    #warning("this method is not used outside of the class and can be private")
-    func hideErrorMessages() {
-        emailInvalidLabel.text = ""
-        passInvalidLabel.text = ""
-    }
-}
-
