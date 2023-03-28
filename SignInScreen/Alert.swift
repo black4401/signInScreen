@@ -18,7 +18,7 @@ class Alert {
             case let .confirmSignOut(_, handler):
                 return UIAlertAction(title: "Yes, sign out?", style: .destructive, handler: handler)
         case .cancel:
-            return UIAlertAction(title: "Stay, signed in", style: .cancel)
+            return UIAlertAction(title: "Cancel", style: .cancel)
         }
     }
     
