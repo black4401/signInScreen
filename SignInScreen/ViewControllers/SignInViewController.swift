@@ -30,8 +30,8 @@ class SignInViewController: UIViewController {
         addTargetForPrimaryKeyboardAction(to: passwordField)
         
         hideErrorMessages()
-        setFieldToEmpty(textField: usernameField)
-        setFieldToEmpty(textField: passwordField)
+        clearTextField(textField: usernameField)
+        clearTextField(textField: passwordField)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,8 +39,8 @@ class SignInViewController: UIViewController {
         
         hideErrorMessages()
         
-        setFieldToEmpty(textField: usernameField)
-        setFieldToEmpty(textField: passwordField)
+        clearTextField(textField: usernameField)
+        clearTextField(textField: passwordField)
     }
     
     @IBAction private func didPressLogIn(_ sender: Any) {
@@ -63,7 +63,7 @@ class SignInViewController: UIViewController {
 }
 
 private extension SignInViewController {
-    func setFieldToEmpty(textField: UITextField) {
+    func clearTextField(textField: UITextField) {
         textField.text = ""
     }
     
